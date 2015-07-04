@@ -65,10 +65,13 @@ var EZBC = (function () {
             if (data[i].border) {
                 chartSVG += 'stroke-width:2;stroke:' + data[i].borderColor + ';';
             }
-            chartSVG += '" />';
+            chartSVG += '">';
+            if (data[i].hasOwnProperty('label')) {
+                chartSVG += '<title>' + data[i].label + '</title>';
+            }
+            chartSVG += '</rect>';
             currentY -= rectHeight;
         }
-
         chartSVG += '</svg>';
         container.innerHTML = chartSVG;
     };
